@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.driverComboBox = new System.Windows.Forms.ComboBox();
+            this.driveComboBox = new System.Windows.Forms.ComboBox();
             this.pathTextBox = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.directoryListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.openButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // driverComboBox
+            // driveComboBox
             // 
-            this.driverComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.driveComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.driverComboBox.FormattingEnabled = true;
-            this.driverComboBox.Location = new System.Drawing.Point(160, 24);
-            this.driverComboBox.Name = "driverComboBox";
-            this.driverComboBox.Size = new System.Drawing.Size(512, 21);
-            this.driverComboBox.TabIndex = 0;
+            this.driveComboBox.FormattingEnabled = true;
+            this.driveComboBox.Location = new System.Drawing.Point(160, 24);
+            this.driveComboBox.Name = "driveComboBox";
+            this.driveComboBox.Size = new System.Drawing.Size(512, 21);
+            this.driveComboBox.TabIndex = 0;
             // 
             // pathTextBox
             // 
@@ -56,16 +56,16 @@
             this.pathTextBox.Size = new System.Drawing.Size(512, 20);
             this.pathTextBox.TabIndex = 1;
             // 
-            // listBox1
+            // directoryListBox
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.directoryListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 87);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(660, 329);
-            this.listBox1.TabIndex = 2;
+            this.directoryListBox.FormattingEnabled = true;
+            this.directoryListBox.Location = new System.Drawing.Point(12, 87);
+            this.directoryListBox.Name = "directoryListBox";
+            this.directoryListBox.Size = new System.Drawing.Size(660, 329);
+            this.directoryListBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -116,12 +116,13 @@
             this.Controls.Add(this.openButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.directoryListBox);
             this.Controls.Add(this.pathTextBox);
-            this.Controls.Add(this.driverComboBox);
+            this.Controls.Add(this.driveComboBox);
             this.MinimumSize = new System.Drawing.Size(350, 500);
             this.Name = "MondayDriver";
             this.Text = "Editing";
+            this.Load += new System.EventHandler(this.MondayDriver_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,9 +130,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox driverComboBox;
+        private System.Windows.Forms.ComboBox driveComboBox;
         private System.Windows.Forms.TextBox pathTextBox;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox directoryListBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button openButton;
