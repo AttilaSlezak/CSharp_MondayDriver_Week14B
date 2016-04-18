@@ -46,6 +46,7 @@
             this.driveComboBox.Name = "driveComboBox";
             this.driveComboBox.Size = new System.Drawing.Size(512, 21);
             this.driveComboBox.TabIndex = 0;
+            this.driveComboBox.SelectedIndexChanged += new System.EventHandler(this.driveComboBox_SelectedIndexChanged);
             // 
             // pathTextBox
             // 
@@ -55,6 +56,8 @@
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.Size = new System.Drawing.Size(512, 20);
             this.pathTextBox.TabIndex = 1;
+            this.pathTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pathTextBox_KeyPress);
+            this.pathTextBox.Leave += new System.EventHandler(this.pathTextBox_Leave);
             // 
             // directoryListBox
             // 
@@ -66,6 +69,7 @@
             this.directoryListBox.Name = "directoryListBox";
             this.directoryListBox.Size = new System.Drawing.Size(660, 329);
             this.directoryListBox.TabIndex = 2;
+            this.directoryListBox.DoubleClick += new System.EventHandler(this.openButton_Click);
             // 
             // label1
             // 
@@ -96,6 +100,7 @@
             this.openButton.TabIndex = 3;
             this.openButton.Text = "Open";
             this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
             // 
             // deleteButton
             // 
@@ -106,6 +111,7 @@
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // MondayDriver
             // 
