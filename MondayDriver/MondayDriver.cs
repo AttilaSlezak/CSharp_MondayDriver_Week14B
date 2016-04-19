@@ -123,6 +123,7 @@ namespace MondayDriver
             try
             {
                 string selectedItem = directoryListBox.GetItemText(directoryListBox.SelectedItem);
+
                 if (selectedItem == "..")
                 {
                     char[] charArray = currentPath.ToCharArray();
@@ -141,7 +142,17 @@ namespace MondayDriver
                 }
                 else
                 {
-                    MessageBox.Show("Fájl");
+                    FileContentWindow fileContentWin = new FileContentWindow();
+                    fileContentWin.Text = selectedItem;
+                    for (int i = 0; i < fileContentWin.Controls.Count; i++)
+                    {
+                        if (fileContentWin.Controls[i].Name == "fileDisplayRichTextBox")
+                        {
+                            string text = File.ReadAllText(currentPath + selectedItem);
+                            fileContentWin.Controls[i].Text = text;
+                        }
+                    }
+                    fileContentWin.ShowDialog();
                 }
             }
             catch
@@ -152,7 +163,16 @@ namespace MondayDriver
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            string selectedItem = directoryListBox.GetItemText(directoryListBox.SelectedItem);
+            string itemType = selectedItem[selectedItem.Length - 1] == '\\' ? " directory " : " file ";
+            string question = "Do you really want to delete the selected" + itemType + selectedItem + "?";
 
+            DialogResult dialogResult = MessageBox.Show(question, "Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                DirectoryInfo dirInf = new DirectoryInfo(currentPath + selectedItem);
+                MessageBox.Show(dirInf.FullName);
+            }
         }
     }
 }

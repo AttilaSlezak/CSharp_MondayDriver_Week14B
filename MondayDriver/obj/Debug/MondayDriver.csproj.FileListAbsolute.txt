@@ -7,3 +7,4 @@ c:\users\slezak attila\documents\visual studio 2015\Projects\MondayDriver\Monday
 c:\users\slezak attila\documents\visual studio 2015\Projects\MondayDriver\MondayDriver\obj\Debug\MondayDriver.csproj.GenerateResource.Cache
 c:\users\slezak attila\documents\visual studio 2015\Projects\MondayDriver\MondayDriver\obj\Debug\MondayDriver.exe
 c:\users\slezak attila\documents\visual studio 2015\Projects\MondayDriver\MondayDriver\obj\Debug\MondayDriver.pdb
+c:\users\slezak attila\documents\visual studio 2015\Projects\MondayDriver\MondayDriver\obj\Debug\MondayDriver.FileContentWindow.resources

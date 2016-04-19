@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileContentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileContentWindow.Designer.cs">
+      <DependentUpon>FileContentWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MondayDriver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FileContentWindow.resx">
+      <DependentUpon>FileContentWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MondayDriver.resx">
       <DependentUpon>MondayDriver.cs</DependentUpon>
     </EmbeddedResource>
