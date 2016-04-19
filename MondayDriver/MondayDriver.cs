@@ -55,26 +55,26 @@ namespace MondayDriver
             }
         }
 
-        private void GetDirectoriesAndFiles(string path)
+        private void GetDirectoriesAndFiles()
         {
             directoryListBox.Items.Clear();
-            if (path.Length > 3)
+            if (currentPath.Length > 3)
             {
                 directoryListBox.Items.Add("..");
             }
 
-            DirectoryInfo[] allDirectories = new DirectoryInfo(path).GetDirectories();
+            DirectoryInfo[] allDirectories = new DirectoryInfo(currentPath).GetDirectories();
 
             foreach (DirectoryInfo oneDirectory in allDirectories)
             {
-                directoryListBox.Items.Add(oneDirectory.FullName.ToString().Replace(path, "") + "\\");
+                directoryListBox.Items.Add(oneDirectory.FullName.ToString().Replace(currentPath, "") + "\\");
             }
 
-            FileInfo[] allFiles = new DirectoryInfo(path).GetFiles();
+            FileInfo[] allFiles = new DirectoryInfo(currentPath).GetFiles();
 
             foreach (FileInfo oneFile in allFiles)
             {
-                directoryListBox.Items.Add(oneFile.FullName.ToString().Replace(path, ""));
+                directoryListBox.Items.Add(oneFile.FullName.ToString().Replace(currentPath, ""));
             }
         }
 
@@ -103,7 +103,7 @@ namespace MondayDriver
                         pathTextBox.Text += "\\";
                     }
                     currentPath = pathTextBox.Text;
-                    GetDirectoriesAndFiles(currentPath);
+                    GetDirectoriesAndFiles();
                 }
                 else
                 {
@@ -132,13 +132,13 @@ namespace MondayDriver
                     int lastBackslash = Array.IndexOf(charArray, '\\');
                     currentPath = currentPath.Substring(0, currentPath.Length - lastBackslash);
                     pathTextBox.Text = currentPath;
-                    GetDirectoriesAndFiles(currentPath);
+                    GetDirectoriesAndFiles();
                 }
                 else if (selectedItem[selectedItem.Length - 1] == '\\')
                 {
                     pathTextBox.Text = currentPath + selectedItem;
                     currentPath += selectedItem;
-                    GetDirectoriesAndFiles(currentPath);
+                    GetDirectoriesAndFiles();
                 }
                 else
                 {
@@ -170,8 +170,30 @@ namespace MondayDriver
             DialogResult dialogResult = MessageBox.Show(question, "Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                DirectoryInfo dirInf = new DirectoryInfo(currentPath + selectedItem);
-                MessageBox.Show(dirInf.FullName);
+                if (itemType == " directory ")
+                {
+                    DirectoryInfo dirInf = new DirectoryInfo(currentPath + selectedItem);
+                    bool isEmpty = !Directory.EnumerateFiles(currentPath + selectedItem).Any();
+                    if (isEmpty)
+                    {
+                        dirInf.Delete();
+                    }
+                    else
+                    {
+                        question = "The folder is not empty!\nAre you really sure you want to delete it?";
+                        dialogResult = MessageBox.Show(question, "Delete", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            dirInf.Delete(true);
+                        }
+                    }
+                }
+                else if (itemType == " file ")
+                {
+                    FileInfo fileInf = new FileInfo(currentPath + selectedItem);
+                    fileInf.Delete();
+                }
+                GetDirectoriesAndFiles();
             }
         }
     }
